@@ -1,0 +1,22 @@
+#Use an existing docker image as a base
+FROM node:alpine as BUILDER
+
+#Download and install a denepndency 
+WORKDIR '/app' 
+COPY package.json .
+
+RUN npm install 
+
+COPY . .
+
+RUN npm run build
+
+
+
+
+
+#tell the imahe what to do when it starts as a container
+
+FROM nginx 
+
+COPY --from=builder /app/build /usr/share/nginx/html
