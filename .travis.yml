@@ -11,16 +11,18 @@ script:
     - docker run  -e CI=true kubista/docker-react npm run test -- --coverage
     
 deploy:
-   - provider: elasticbeanstalk
-     region: "us-east-2"
-     app: "docker"
-     env: "DockerReact-env"
-     bucket_name: "elasticbeanstalk-us-east-2-865704418757"
-     bucket_path: "docker"
-     on:
-         branch: master
-     access_key_id: $aws_access_key
-     secret_access_key: "$aws_secret_key"
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-us-east-2-865704418757"
+    bucket_path: "docker"
+    on:
+        branch: master
+    access_key_id: 
+        secure: $aws_access_key
+    secret_access_key:
+        secure: "$aws_secret_key"
 
 #    secret_key:
 #        secure: "$aws_secret_key"
