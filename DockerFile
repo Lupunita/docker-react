@@ -18,5 +18,6 @@ RUN npm run build
 #tell the imahe what to do when it starts as a container
 
 FROM nginx 
+EXPOSE 80
 
 COPY --from=builder /app/build /usr/share/nginx/html
