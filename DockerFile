@@ -3,7 +3,7 @@ FROM node:alpine as BUILDER
 
 #Download and install a denepndency 
 WORKDIR '/app' 
-COPY package.json .
+COPY package*.json ./
 
 RUN npm install 
 
