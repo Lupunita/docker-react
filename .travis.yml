@@ -8,7 +8,7 @@ before_install:
     - docker build -t kubista/docker-react -f Dockerfile.dev . 
 
 script:
-    - docker run kubista/docker-react npm run test -- --coverage
+    - docker run  -e CI=true kubista/docker-react npm run test -- --coverage
     
 deploy:
     provider: elasticbeanstalk
